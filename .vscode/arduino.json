@@ -1,0 +1,6 @@
+{
+    "board": "esp32:esp32:esp32doit-devkit-v1",
+    "sketch": "examples\\RS485Passthrough\\RS485Passthrough.ino",
+    "configuration": "FlashFreq=80,UploadSpeed=921600,DebugLevel=none,EraseFlash=none",
+    "port": "COM24"
+}
