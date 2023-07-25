@@ -2,14 +2,31 @@
 
 ## Methods
 
-### `begin()`
+### `RS485Class()`
 
-Initializes the RS485 object communication speed.
+Creates a new CSE_ArduinoRS485 object. If you are using a hardware serial port, you can simply send its name as a parameter. If you are using software serial, you must include the SoftwareSerial library first and create a new object of that type. Then send the name of the object as a parameter.
 
 #### Syntax 
 
+```cpp
+RS485Class RS485 (serial, dePin, rePin, txPin);
 ```
-RS485.begin(baudrate)
+
+#### Parameters
+
+* _serial_: Name of the serial port to use. Can be hardware serial or software serial.
+* _dePin_: Drive enable pin.
+* _rePin_: Receive enable pin. Optional. Default: -1.
+* _txPin_: Serial transmit pin (used to send break signals). Optional. Default: -1.
+
+### `begin()`
+
+Initializes the RS485 object communication speed. The baudrate can be left empty to make it 0. This will prevent the serial port from being initialized by the RS485 library. But then you have to manually initialize the serial port before calling any RS485 library function.
+
+#### Syntax 
+
+```cpp
+RS485.begin (baudrate)
 ```
 
 #### Parameters
@@ -38,11 +55,11 @@ None.
 
 ### `end()`
 
-Disables RS485 communication.
+Disables RS485 communication. This will close the serial port and reset the DE and RE pins to INPUT mode.
 
 #### Syntax 
 
-```
+```cpp
 RS485.end()
 ```
 
@@ -76,7 +93,7 @@ Get the number of bytes (characters) available for reading from the RS485 port. 
 
 #### Syntax 
 
-```
+```cpp
 RS485.available()
 ```
 
@@ -110,7 +127,7 @@ Returns the next byte (character) of the incoming serial data without removing i
 
 #### Syntax 
 
-```
+```cpp
 RS485.peek()
 ```
 
@@ -144,7 +161,7 @@ Reads incoming serial data.
 
 #### Syntax 
 
-```
+```cpp
 RS485.read()
 ```
 
@@ -178,8 +195,8 @@ Writes binary data to the serial port. This data is sent as a byte or series of 
 
 #### Syntax 
 
-```
-RS485.write(uint8_t b)
+```cpp
+RS485.write (uint8_t b)
 ```
 
 #### Parameters
@@ -212,7 +229,7 @@ Waits for the transmission of outgoing serial data to complete.
 
 #### Syntax 
 
-```
+```cpp
 RS485.flush()
 ```
 
@@ -242,11 +259,11 @@ None.
 
 ### `beginTransmission()`
 
-Enables RS-485 transmission.
+Enables RS-485 transmission. This will assert the DE pin and the RE pin is not modified (since DE has priority over RE).
 
 #### Syntax 
 
-```
+```cpp
 RS485.beginTransmission()
 ```
 
@@ -257,29 +274,6 @@ None.
 #### Returns
 
 None.
-
-#### Example
-
-```
-#include <ArduinoRS485.h>
-
-int counter = 0;
-
-void setup() {
-  RS485.begin(9600);
-}
-
-void loop() {
-  RS485.beginTransmission();
-  RS485.print("Counter: ");
-  RS485.println(counter);
-  RS485.endTransmission();
-
-  counter++;
-
-  delay(1000);
-}
-```
 
 #### See also
 
@@ -299,11 +293,11 @@ void loop() {
 
 ### `endTransmission()`
 
-Disables RS-485 transmission.
+Disables RS-485 transmission. This deasserts the DE pin and the RE pin is not modified (since DE has priority over RE).
 
 #### Syntax 
 
-```
+```cpp
 RS485.endTransmission()
 ```
 
@@ -314,29 +308,6 @@ None.
 #### Returns
 
 None.
-
-#### Example
-
-```
-#include <ArduinoRS485.h>
-
-int counter = 0;
-
-void setup() {
-  RS485.begin(9600);
-}
-
-void loop() {
-  RS485.beginTransmission();
-  RS485.print("Counter: ");
-  RS485.println(counter);
-  RS485.endTransmission();
-
-  counter++;
-
-  delay(1000);
-}
-```
 
 #### See also
 
@@ -356,11 +327,11 @@ void loop() {
 
 ### `receive()`
 
-Enables reception. 
+Enables reception. This asserts the RE pin. The state of the DE pins should be set to LOW before calling this function.
 
 #### Syntax 
 
-```
+```cpp
 RS485.receive()
 ```
 
@@ -371,28 +342,6 @@ None.
 #### Returns
 
 None.
-
-#### Example
-
-```
-#include <ArduinoRS485.h>
-
-void setup() {
-  Serial.begin(9600);
-  while (!Serial);
-
-  RS485.begin(9600);
-
-  // Enable data reception
-  RS485.receive();
-}
-
-void loop() {
-  if (RS485.available()) {
-    Serial.write(RS485.read());
-  }
-}
-```
 
 #### See also
 
@@ -412,11 +361,11 @@ void loop() {
 
 ### `noReceive()`
 
-Disables reception. 
+Disables reception. This deasserts the RE pin. If the DE pin is also deasserted (LOW), then the transceiver enters a high-impedance state.
 
 #### Syntax 
 
-```
+```cpp
 RS485.noReceive()
 ```
 
@@ -446,12 +395,12 @@ None.
 
 ### `sendBreak()`
 
-Sends a serial break signal for the specified duration in milliseconds.
+Sends a serial break signal for the specified duration in milliseconds. This function will only work if the TX pin is specified in the constructor. The serial port will be reinitialized only if the baudrate is greater than 0.
 
 #### Syntax 
 
-```
-RS485.sendBreak(unsigned int duration)
+```cpp
+RS485.sendBreak (unsigned int duration)
 ```
 
 #### Parameters
@@ -480,12 +429,12 @@ None.
 
 ### `sendBreakMicroseconds()`
 
-Sends a serial break signal for the specified duration in microseconds.
+Sends a serial break signal for the specified duration in microseconds. This function will only work if the TX pin is specified in the constructor. The serial port will be reinitialized only if the baudrate is greater than 0.
 
 #### Syntax 
 
-```
-RS485.sendBreak(unsigned int duration)
+```cpp
+RS485.sendBreak (unsigned int duration)
 ```
 
 #### Parameters
@@ -514,19 +463,19 @@ None.
 
 ### `setPins()`
 
-Modify the pins used to communicate with the MAX3157 chipset. By default the library uses pin 14 for TX, pin A6 for drive output enable, and pin A5 for receiver output enable.
+Modify the pins used to communicate with the RS-485 transceiver.
 
 #### Syntax 
 
-```
-RS485.setPins(int txPin, int dePin, int rePin)
+```cpp
+RS485.setPins (int dePin, int rePin, int txPin)
 ```
 
 #### Parameters
 
-* _txPin_: transmission pin (used to send break signals).
 * _dePin_: drive output enable pin.
 * _rePin_: receiver output enable pin.
+* _txPin_: transmission pin (used to send break signals).
 
 #### Returns
 

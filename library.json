@@ -13,7 +13,7 @@
         "url": "https://github.com/CIRCUITSTATE",
         "maintainer": true
     },
-    "version": "1.0.6",
+    "version": "1.0.7",
     "license": "LGPL-2.1",
     "frameworks": "arduino",
     "platforms": "*"
