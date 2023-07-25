@@ -71,22 +71,6 @@ None.
 
 None.
 
-#### See also
-
-* [begin()](#begin)
-* [available()](#available)
-* [peek()](#peek)
-* [read()](#read)
-* [write()](#write)
-* [flush()](#flush)
-* [beginTransmission()](#begintransmission)
-* [endTransmission()](#endtransmission)
-* [receive()](#receive)
-* [noReceive()](#noreceive)
-* [sendBreak()](#sendbreak)
-* [sendBreakMicroseconds()](#sendbreakmicroseconds)
-* [setPins()](#setpins)
-
 ### `available()`
 
 Get the number of bytes (characters) available for reading from the RS485 port. This is data that already arrived and is stored in the serial receive buffer.
@@ -104,22 +88,6 @@ None.
 #### Returns
 
 The number of bytes available to read.
-
-#### See also
-
-* [begin()](#begin)
-* [end()](#end)
-* [peek()](#peek)
-* [read()](#read)
-* [write()](#write)
-* [flush()](#flush)
-* [beginTransmission()](#begintransmission)
-* [endTransmission()](#endtransmission)
-* [receive()](#receive)
-* [noReceive()](#noreceive)
-* [sendBreak()](#sendbreak)
-* [sendBreakMicroseconds()](#sendbreakmicroseconds)
-* [setPins()](#setpins)
 
 ### `peek()`
 
@@ -139,22 +107,6 @@ None.
 
 The first byte of incoming serial data available or -1 if no data is available. 
 
-#### See also
-
-* [begin()](#begin)
-* [end()](#end)
-* [available()](#available)
-* [read()](#read)
-* [write()](#write)
-* [flush()](#flush)
-* [beginTransmission()](#begintransmission)
-* [endTransmission()](#endtransmission)
-* [receive()](#receive)
-* [noReceive()](#noreceive)
-* [sendBreak()](#sendbreak)
-* [sendBreakMicroseconds()](#sendbreakmicroseconds)
-* [setPins()](#setpins)
-
 ### `read()`
 
 Reads incoming serial data.
@@ -172,22 +124,6 @@ None.
 #### Returns
 
 The first byte of incoming serial data available or -1 if no data is available. 
-
-#### See also
-
-* [begin()](#begin)
-* [end()](#end)
-* [available()](#available)
-* [peak()](#peak)
-* [write()](#write)
-* [flush()](#flush)
-* [beginTransmission()](#begintransmission)
-* [endTransmission()](#endtransmission)
-* [receive()](#receive)
-* [noReceive()](#noreceive)
-* [sendBreak()](#sendbreak)
-* [sendBreakMicroseconds()](#sendbreakmicroseconds)
-* [setPins()](#setpins)
 
 ### `write()`
 
@@ -207,22 +143,6 @@ RS485.write (uint8_t b)
 
 The number of bytes written.
 
-#### See also
-
-* [begin()](#begin)
-* [end()](#end)
-* [available()](#available)
-* [peak()](#peak)
-* [read()](#write)
-* [flush()](#flush)
-* [beginTransmission()](#begintransmission)
-* [endTransmission()](#endtransmission)
-* [receive()](#receive)
-* [noReceive()](#noreceive)
-* [sendBreak()](#sendbreak)
-* [sendBreakMicroseconds()](#sendbreakmicroseconds)
-* [setPins()](#setpins)
-
 ### `flush()`
 
 Waits for the transmission of outgoing serial data to complete.
@@ -240,22 +160,6 @@ None.
 #### Returns
 
 None.
-
-#### See also
-
-* [begin()](#begin)
-* [end()](#end)
-* [available()](#available)
-* [peak()](#peak)
-* [read()](#write)
-* [write()](#write)
-* [beginTransmission()](#begintransmission)
-* [endTransmission()](#endtransmission)
-* [receive()](#receive)
-* [noReceive()](#noreceive)
-* [sendBreak()](#sendbreak)
-* [sendBreakMicroseconds()](#sendbreakmicroseconds)
-* [setPins()](#setpins)
 
 ### `beginTransmission()`
 
@@ -275,22 +179,6 @@ None.
 
 None.
 
-#### See also
-
-* [begin()](#begin)
-* [end()](#end)
-* [available()](#available)
-* [peak()](#peak)
-* [read()](#write)
-* [write()](#write)
-* [flush()](#flush)
-* [endTransmission()](#endtransmission)
-* [receive()](#receive)
-* [noReceive()](#noreceive)
-* [sendBreak()](#sendbreak)
-* [sendBreakMicroseconds()](#sendbreakmicroseconds)
-* [setPins()](#setpins)
-
 ### `endTransmission()`
 
 Disables RS-485 transmission. This deasserts the DE pin and the RE pin is not modified (since DE has priority over RE).
@@ -308,22 +196,6 @@ None.
 #### Returns
 
 None.
-
-#### See also
-
-* [begin()](#begin)
-* [end()](#end)
-* [available()](#available)
-* [peak()](#peak)
-* [read()](#write)
-* [write()](#write)
-* [flush()](#flush)
-* [beginTransmission()](#begintransmission)
-* [receive()](#receive)
-* [noReceive()](#noreceive)
-* [sendBreak()](#sendbreak)
-* [sendBreakMicroseconds()](#sendbreakmicroseconds)
-* [setPins()](#setpins)
 
 ### `receive()`
 
@@ -343,22 +215,6 @@ None.
 
 None.
 
-#### See also
-
-* [begin()](#begin)
-* [end()](#end)
-* [available()](#available)
-* [peak()](#peak)
-* [read()](#write)
-* [write()](#write)
-* [flush()](#flush)
-* [beginTransmission()](#begintransmission)
-* [endTransmission()](#endtransmission)
-* [noReceive()](#noreceive)
-* [sendBreak()](#sendbreak)
-* [sendBreakMicroseconds()](#sendbreakmicroseconds)
-* [setPins()](#setpins)
-
 ### `noReceive()`
 
 Disables reception. This deasserts the RE pin. If the DE pin is also deasserted (LOW), then the transceiver enters a high-impedance state.
@@ -376,22 +232,6 @@ None.
 #### Returns
 
 None.
-
-#### See also
-
-* [begin()](#begin)
-* [end()](#end)
-* [available()](#available)
-* [peak()](#peak)
-* [read()](#write)
-* [write()](#write)
-* [flush()](#flush)
-* [beginTransmission()](#begintransmission)
-* [endTransmission()](#endtransmission)
-* [receive()](#receive)
-* [sendBreak()](#sendbreak)
-* [sendBreakMicroseconds()](#sendbreakmicroseconds)
-* [setPins()](#setpins)
 
 ### `sendBreak()`
 
@@ -411,22 +251,6 @@ RS485.sendBreak (unsigned int duration)
 
 None.
 
-#### See also
-
-* [begin()](#begin)
-* [end()](#end)
-* [available()](#available)
-* [peak()](#peak)
-* [read()](#write)
-* [write()](#write)
-* [flush()](#flush)
-* [beginTransmission()](#begintransmission)
-* [endTransmission()](#endtransmission)
-* [receive()](#receive)
-* [noReceive()](#noreceive)
-* [sendBreakMicroseconds()](#sendbreakmicroseconds)
-* [setPins()](#setpins)
-
 ### `sendBreakMicroseconds()`
 
 Sends a serial break signal for the specified duration in microseconds. This function will only work if the TX pin is specified in the constructor. The serial port will be reinitialized only if the baudrate is greater than 0.
@@ -444,22 +268,6 @@ RS485.sendBreak (unsigned int duration)
 #### Returns
 
 None.
-
-#### See also
-
-* [begin()](#begin)
-* [end()](#end)
-* [available()](#available)
-* [peak()](#peak)
-* [read()](#write)
-* [write()](#write)
-* [flush()](#flush)
-* [beginTransmission()](#begintransmission)
-* [endTransmission()](#endtransmission)
-* [receive()](#receive)
-* [noReceive()](#noreceive)
-* [sendBreak()](#sendbreak)
-* [setPins()](#setpins)
 
 ### `setPins()`
 
@@ -480,19 +288,3 @@ RS485.setPins (int dePin, int rePin, int txPin)
 #### Returns
 
 None.
-
-#### See also
-
-* [begin()](#begin)
-* [end()](#end)
-* [available()](#available)
-* [peak()](#peak)
-* [read()](#write)
-* [write()](#write)
-* [flush()](#flush)
-* [beginTransmission()](#begintransmission)
-* [endTransmission()](#endtransmission)
-* [receive()](#receive)
-* [noReceive()](#noreceive)
-* [sendBreak()](#sendbreak)
-* [sendBreakMicroseconds()](#sendbreakmicroseconds)
