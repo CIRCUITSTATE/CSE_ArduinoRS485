@@ -26,6 +26,7 @@ noReceive KEYWORD2
 sendBreak KEYWORD2
 sendBreakMicroseconds KEYWORD2
 setPins KEYWORD2
+setDelays KEYWORD2
 
 #######################################
 # Constants (LITERAL1)

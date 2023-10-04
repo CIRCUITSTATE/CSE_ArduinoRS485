@@ -1,25 +1,22 @@
 :repository-owner: CIRCUITSTATE
 :repository-name: CSE_ArduinoRS485
-:repository-version: 1.0.9
+:repository-version: 1.0.10
 
 = {repository-name} Library for Arduino =
 
-image:https://github.com/{repository-owner}/{repository-name}/actions/workflows/check-arduino.yml/badge.svg["Check Arduino status", link="https://github.com/{repository-owner}/{repository-name}/actions/workflows/check-arduino.yml"]
-image:https://github.com/{repository-owner}/{repository-name}/actions/workflows/compile-examples.yml/badge.svg["Compile Examples status", link="https://github.com/{repository-owner}/{repository-name}/actions/workflows/compile-examples.yml"]
-image:https://github.com/{repository-owner}/{repository-name}/actions/workflows/spell-check.yml/badge.svg["Spell Check status", link="https://github.com/{repository-owner}/{repository-name}/actions/workflows/spell-check.yml"]
-
-This Arduino library allows you to send and receive data using the **RS-485** interface standard. Supported by all Arduino-compatible boards such as ESP32, STM32, RP2040, AVR, SAMD, ESP8266, etc. You can use both hardware and software serial ports. This library supports the Maxim Integrated MAX485 and equivalent chipsets.
+This Arduino library allows you to send and receive data using the **RS-485** interface standard. Supported by all Arduino-compatible boards such as ESP32, STM32, RP2040, AVR, SAMD, ESP8266, etc. You can use both hardware and software serial ports for communication. This library supports the Maxim Integrated **MAX485** and equivalent transceivers.
 
 Three examples are included with this library:
 
-  * **RS485_Sender** - Sends data to a receiver.
-  * **RS485_Receiver** - Receives data from a sender.
+  * **RS485_Sender** - Sends data to a connected receiver.
+  * **RS485_Receiver** - Receives data from a connected sender.
   * **RS485_Passthrough** - Sends and receives data between the RS-485 port and the default serial port.
 
-This library is a fork of the ArduinoRS485 library by Arduino, and is maintained by **CIRCUITSTATE**.
+This library is a fork of the **ArduinoRS485** library by Arduino, and is maintained by **CIRCUITSTATE Electronics**.
 
 * https://github.com/arduino-libraries/ArduinoRS485[ArduinoRS485 Library by Arduino]
 * https://www.arduino.cc/reference/en/libraries/arduinors485/[ArduinoRS485 documentation by Arduino]
 * https://www.circuitstate.com/tutorials/what-is-rs-485-how-to-use-max485-with-arduino-for-reliable-long-distance-serial-communication/[RS-485 tutorial by CIRCUITSTATE]
 * https://www.circuitstate.com/pinouts/max485-cd4069-rs-485-module-with-auto-data-direction-control-pinout-diagram-and-pin-reference/[MAX485+CD4069 Module Pinout by CIRCUITSTATE]
+* https://www.circuitstate.com/tutorials/what-is-modbus-communication-protocol-and-how-to-implement-modbus-rtu-with-arduino/[Modbus RTU tutorial by CIRCUITSTATE]
 

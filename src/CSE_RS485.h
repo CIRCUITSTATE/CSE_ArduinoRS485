@@ -20,8 +20,8 @@
 */
 //===================================================================================//
 
-// Version: 1.0.9
-// Last modified: +05:30 20:37:40 PM 25-07-2023, Tuesday
+// Version: 1.0.10
+// Last modified: +05:30 12:57:53 PM 04-10-2023, Wednesday
 // Source: https://github.com/CIRCUITSTATE/CSE_ArduinoRS485
 
 //===================================================================================//
@@ -87,7 +87,6 @@ class RS485Class : public Stream {
     void sendBreakMicroseconds (unsigned int duration);
 
     void setPins (int dePin, int rePin = -1, int txPin = -1);
-
     void setDelays (int predelay, int postdelay);
 
   private:
