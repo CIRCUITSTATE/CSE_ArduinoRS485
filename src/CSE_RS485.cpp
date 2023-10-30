@@ -20,8 +20,8 @@
 */
 //===================================================================================//
 
-// Version: 1.0.10
-// Last modified: +05:30 12:57:59 PM 04-10-2023, Wednesday
+// Version: 1.0.11
+// Last modified: +05:30 15:51:51 PM 30-10-2023, Monday
 // Source: https://github.com/CIRCUITSTATE/CSE_ArduinoRS485
 
 //===================================================================================//
@@ -250,8 +250,7 @@ RS485Class:: operator bool() {
  * 
  */
 void RS485Class:: beginTransmission() {
-  if (_dePin > -1) {
-    digitalWrite (_dePin, HIGH);
+  if (assertDE()) { // Can assert before delay
     if (_predelay) delayMicroseconds (_predelay);
   }
 
@@ -268,7 +267,7 @@ void RS485Class:: endTransmission() {
 
   if (_dePin > -1) {
     if (_postdelay) delayMicroseconds (_postdelay);
-    digitalWrite (_dePin, LOW);
+    deassertDE(); // Only deassert after delay
   }
 
   _transmisionBegun = false;
@@ -282,21 +281,17 @@ void RS485Class:: endTransmission() {
  * 
  */
 void RS485Class:: receive() {
-  if (_rePin > -1) {
-    digitalWrite (_rePin, LOW);
-  }
+  assertRE();
 }
 
 //===================================================================================//
 /**
- * @brief Puts the transceiver in a no receive mode by deasserting the RE pin. If the DE
- * pin is also deasserted, then the transceiver is in a high impedance state.
+ * @brief Puts the transceiver in a no-receive mode by deasserting the RE pin. If the DE
+ * pin is also deasserted, then the transceiver will be in a high impedance state.
  * 
  */
 void RS485Class:: noReceive() {
-  if (_rePin > -1) {
-    digitalWrite (_rePin, HIGH);
-  }
+  deassertRE();
 }
 
 //===================================================================================//
@@ -373,6 +368,66 @@ void RS485Class:: setPins (int dePin, int rePin, int txPin) {
 void RS485Class:: setDelays (int predelay, int postdelay) {
   _predelay = predelay;
   _postdelay = postdelay;
+}
+
+//===================================================================================//
+/**
+ * @brief Asserts (set to HIGH) the DE pin if the pin is defined.
+ * 
+ * @return true If the DE pin is defined; false otherwise.
+ * 
+ */
+bool RS485Class:: assertDE() {
+  if (_dePin > -1) {
+    digitalWrite (_dePin, HIGH);
+    return true;
+  }
+  return false;
+}
+
+//===================================================================================//
+/**
+ * @brief Deasserts (set to LOW) the DE pin if the pin is defined.
+ * 
+ * @return true If the DE pin is defined; false otherwise.
+ * 
+ */
+bool RS485Class:: deassertDE() {
+  if (_dePin > -1) {
+    digitalWrite (_dePin, LOW);
+    return true;
+  }
+  return false;
+}
+
+//===================================================================================//
+/**
+ * @brief Asserts (set to LOW) the RE pin if the pin is defined.
+ * 
+ * @return true If the RE pin is defined; false otherwise.
+ * 
+ */
+bool RS485Class:: assertRE() {
+  if (_rePin > -1) {
+    digitalWrite (_rePin, LOW);
+    return true;
+  }
+  return false;
+}
+
+//===================================================================================//
+/**
+ * @brief Deasserts (set to HIGH) the RE pin if the pin is defined.
+ * 
+ * @return true If the RE pin is defined; false otherwise.
+ * 
+ */
+bool RS485Class:: deassertRE() {
+  if (_rePin > -1) {
+    digitalWrite (_rePin, HIGH);
+    return true;
+  }
+  return false;
 }
 
 //===================================================================================//

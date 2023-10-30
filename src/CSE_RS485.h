@@ -20,8 +20,8 @@
 */
 //===================================================================================//
 
-// Version: 1.0.10
-// Last modified: +05:30 12:57:53 PM 04-10-2023, Wednesday
+// Version: 1.0.11
+// Last modified: +05:30 15:51:43 PM 30-10-2023, Monday
 // Source: https://github.com/CIRCUITSTATE/CSE_ArduinoRS485
 
 //===================================================================================//
@@ -88,6 +88,11 @@ class RS485Class : public Stream {
 
     void setPins (int dePin, int rePin = -1, int txPin = -1);
     void setDelays (int predelay, int postdelay);
+
+    bool assertDE();
+    bool deassertDE();
+    bool assertRE();
+    bool deassertRE();
 
   private:
     // Create the suitable type of serial port
