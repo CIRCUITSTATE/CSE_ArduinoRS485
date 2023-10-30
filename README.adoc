@@ -1,6 +1,6 @@
 :repository-owner: CIRCUITSTATE
 :repository-name: CSE_ArduinoRS485
-:repository-version: 1.0.10
+:repository-version: 1.0.11
 
 = {repository-name} Library for Arduino =
 

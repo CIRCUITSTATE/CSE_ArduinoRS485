@@ -1,24 +1,32 @@
 # CSE_ArduinoRS485 library
 
-## Methods
+Version 1.0.11, +05:30 03:54:10 PM 30-10-2023, Monday
 
 ### Index
 
-* [begin()](#begin)
-* [end()](#end)
-* [available()](#available)
-* [peek()](#peek)
-* [read()](#read)
-* [write()](#write)
-* [flush()](#flush)
-* [beginTransmission()](#begintransmission)
-* [endTransmission()](#endtransmission)
-* [receive()](#receive)
-* [noReceive()](#noreceive)
-* [sendBreak()](#sendbreak)
-* [sendBreakMicroseconds()](#sendbreakmicroseconds)
-* [setPins()](#setpins)
-* [setdelays()](#setdelays)
+- [CSE\_ArduinoRS485 library](#cse_arduinors485-library)
+    - [Index](#index)
+    - [`RS485Class()`](#rs485class)
+    - [`begin()`](#begin)
+    - [`end()`](#end)
+    - [`available()`](#available)
+    - [`peek()`](#peek)
+    - [`read()`](#read)
+    - [`write()`](#write)
+    - [`flush()`](#flush)
+    - [`beginTransmission()`](#begintransmission)
+    - [`endTransmission()`](#endtransmission)
+    - [`receive()`](#receive)
+    - [`noReceive()`](#noreceive)
+    - [`sendBreak()`](#sendbreak)
+    - [`sendBreakMicroseconds()`](#sendbreakmicroseconds)
+    - [`setPins()`](#setpins)
+    - [`setDelays()`](#setdelays)
+    - [`assertDE()`](#assertde)
+    - [`deassertDE()`](#deassertde)
+    - [`assertRE()`](#assertre)
+    - [`deassertRE()`](#deassertre)
+
 
 ### `RS485Class()`
 
@@ -33,14 +41,14 @@ RS485Class RS485 (auto serial, int dePin, int rePin, int txPin);
 
 #### Parameters
 
-* _serial_: Name of the serial port to use. Can be hardware serial (`HardwareSerial`) or software serial (`SoftwareSerial`).
-* _dePin_: Drive enable pin.
-* _rePin_: Receive enable pin. Optional. Default: -1.
-* _txPin_: Serial transmit pin (used to send break signals). Optional. Default: -1.
+* _`serial`_: Name of the serial port to use. Can be hardware serial (`HardwareSerial`) or software serial (`SoftwareSerial`).
+* _`dePin`_: Drive enable pin.
+* _`rePin`_: Receive enable pin. Optional. Default: `-1`.
+* _`txPin`_: Serial transmit pin (used to send break signals). Optional. Default: `-1`.
 
 ### `begin()`
 
-Initializes the RS485 object. The baudrate can be left empty to make it 0. This will prevent the serial port from being initialized by the RS485 library. You have to then manually initialize the serial port before calling any RS485 library function. If the baudrate is non-zero, the user can also specify the UART configuration, for example `SERIAL_8N1`. It is also possible to set pre and post delays in milliseconds for each communication.
+Initializes the RS485 object. The baudrate can be left empty to make it `0`. This will prevent the serial port from being initialized by the RS485 library. You have to then manually initialize the serial port before calling any RS485 library function. If the baudrate is non-zero, the user can also specify the UART configuration, for example `SERIAL_8N1`. It is also possible to set pre and post delays in milliseconds for each communication.
 
 #### Syntax 
 
@@ -56,10 +64,10 @@ RS485.begin (unsigned long baudrate, uint16_t config, int predelay, int postdela
 
 #### Parameters
 
-* _baudrate_: Communication speed in bits per second (baud). Optional. Default: 0. If 0, the serial port will not be initialized.
-* _config_: Serial port configuration. Example, `SERIAL_8N1`.
-* _predelay_: Delay in milliseconds before sending data. Optional. Default: 0.
-* _postdelay_: Delay in milliseconds after sending data. Optional. Default: 0.
+* _`baudrate`_: Communication speed in bits per second (baud). Optional. Default: `0`. If `0`, the serial port will not be initialized.
+* _`config`_: Serial port configuration. Example, `SERIAL_8N1`.
+* _`predelay`_: Delay in milliseconds before sending data. Optional. Default: `0`.
+* _`postdelay`_: Delay in milliseconds after sending data. Optional. Default: `0`.
 
 #### Returns
 
@@ -67,7 +75,7 @@ None.
 
 ### `end()`
 
-Disables RS485 communication. This will close the serial port and reset the DE and RE pins to INPUT mode. The serial port will be closed regardless of whether it was initialized by the RS485 library or not.
+Disables RS485 communication. This will close the serial port and reset the DE and RE pins to `INPUT` mode. The serial port will be closed regardless of whether it was initialized by the RS485 library or not.
 
 #### Syntax 
 
@@ -99,7 +107,7 @@ None.
 
 #### Returns
 
-* _int_: The number of bytes available to read.
+* _`int`_: The number of bytes available to read.
 
 ### `peek()`
 
@@ -117,11 +125,11 @@ None.
 
 #### Returns
 
-* _int_: The first byte of incoming serial data available or -1 if no data is available. 
+* _`int`_: The first byte of incoming serial data available or `-1` if no data is available. 
 
 ### `read()`
 
-Returns a single byte from the serial read buffer. Return -1 if no data is available. Each read operation will remove the byte from the buffer.
+Returns a single byte from the serial read buffer. Return `-1` if no data is available. Each read operation will remove the byte from the buffer.
 
 #### Syntax 
 
@@ -135,7 +143,7 @@ None.
 
 #### Returns
 
-* _int_: The first byte of incoming serial data available or -1 if no data is available. 
+* _`int`_: The first byte of incoming serial data available or `-1` if no data is available. 
 
 ### `write()`
 
@@ -149,11 +157,11 @@ RS485.write (uint8_t b)
 
 #### Parameters
 
-* _b_: unsigned char.
+* _`b`_: unsigned char.
 
 #### Returns
 
-* _size_t_: The number of bytes written.
+* _`size_t`_: The number of bytes written.
 
 ### `flush()`
 
@@ -249,7 +257,7 @@ None.
 
 ### `sendBreak()`
 
-Sends a serial break signal for the specified duration in milliseconds. This is done by closing the serial port, holding the TX pin of the serial port LOW for a specified duration in milliseconds, and then reinitializing the serial port. If the TX pins is not set, this function has no effect. The serial port will be reinitialized only if the baudrate is greater than 0. If the baudrate is 0, then you have to manually initialize the serial port in your main code, just after calling this function.
+Sends a serial break signal for the specified duration in milliseconds. This is done by closing the serial port, holding the TX pin of the serial port `LOW` for a specified duration in milliseconds, and then reinitializing the serial port. If the TX pins is not set, this function has no effect. The serial port will be reinitialized only if the baudrate is greater than `0`. If the baudrate is `0`, then you have to manually initialize the serial port in your main code, just after calling this function.
 
 #### Syntax 
 
@@ -259,7 +267,7 @@ RS485.sendBreak (unsigned int duration)
 
 #### Parameters
 
-* _duration_: Duration of the break signal in milliseconds.
+* _`duration`_: Duration of the break signal in milliseconds.
 
 #### Returns
 
@@ -277,7 +285,7 @@ RS485.sendBreak (unsigned int duration)
 
 #### Parameters
 
-* _duration_: Duration of the break signal in microseconds.
+* _`duration`_: Duration of the break signal in microseconds.
 
 #### Returns
 
@@ -295,9 +303,9 @@ RS485.setPins (int dePin, int rePin, int txPin)
 
 #### Parameters
 
-* _dePin_: Drive output enable pin.
-* _rePin_: Receiver output enable pin.
-* _txPin_: Transmission pin (used to send break signals).
+* _`dePin`_: Drive output enable pin.
+* _`rePin`_: Receiver output enable pin.
+* _`txPin`_: Transmission pin (used to send break signals).
 
 #### Returns
 
@@ -314,9 +322,82 @@ RS485.setDelays (int predelay, int postdelay)
 
 #### Parameters
 
-* _predelay_: The delay before sending data.
-* _postdelay_: The delay after sending data.
+* _`predelay`_: The delay before sending data.
+* _`postdelay`_: The delay after sending data.
 
 #### Returns
 
 None.
+
+### `assertDE()`
+
+Asserts (set to `HIGH`) the DE pin if the pin is defined. The function returns `true` if the assertion was successful. If the DE pin is not defined, the function returns `false`.
+
+#### Syntax 
+
+```cpp
+RS485.assertDE()
+```
+
+#### Parameters
+
+None.
+
+#### Returns
+
+* _`bool`_: `true` if the DE pin was asserted, `false` otherwise.
+
+### `deassertDE()`
+
+Deasserts (set to `LOW`) the DE pin if the pin is defined. The function returns `true` if the deassertion was successful. If the DE pin is not defined, the function returns `false`.
+
+#### Syntax 
+
+```cpp
+RS485.deassertDE()
+```
+
+#### Parameters
+
+None.
+
+#### Returns
+
+* _`bool`_: `true` if the DE pin was deasserted, `false` otherwise.
+
+### `assertRE()`
+
+Asserts (set to `LOW`) the RE pin if the pin is defined. The function returns `true` if the assertion was successful. If the RE pin is not defined, the function returns `false`.
+
+#### Syntax 
+
+```cpp
+RS485.assertRE()
+```
+
+#### Parameters
+
+None.
+
+#### Returns
+
+* _`bool`_: `true` if the RE pin was asserted, `false` otherwise.
+
+### `deassertRE()`
+
+Deasserts (set to `HIGH`) the RE pin if the pin is defined. The function returns `true` if the deassertion was successful. If the RE pin is not defined, the function returns `false`.
+
+#### Syntax 
+
+```cpp
+RS485.deassertRE()
+```
+
+#### Parameters
+
+None.
+
+#### Returns
+
+* _`bool`_: `true` if the RE pin was deasserted, `false` otherwise.
+
