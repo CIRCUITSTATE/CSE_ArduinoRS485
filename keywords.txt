@@ -27,6 +27,10 @@ sendBreak KEYWORD2
 sendBreakMicroseconds KEYWORD2
 setPins KEYWORD2
 setDelays KEYWORD2
+assertDE KEYWORD2
+deassertDE KEYWORD2
+assertRE KEYWORD2
+deassertRE KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
