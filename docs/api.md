@@ -1,6 +1,6 @@
 # CSE_ArduinoRS485 library
 
-Version 1.0.11, +05:30 03:54:10 PM 30-10-2023, Monday
+Version 1.0.12, +05:30 03:16:49 PM 28-01-2024, Sunday, Monday
 
 ### Index
 
@@ -48,7 +48,7 @@ RS485Class RS485 (auto serial, int dePin, int rePin, int txPin);
 
 ### `begin()`
 
-Initializes the RS485 object. The baudrate can be left empty to make it `0`. This will prevent the serial port from being initialized by the RS485 library. You have to then manually initialize the serial port before calling any RS485 library function. If the baudrate is non-zero, the user can also specify the UART configuration, for example `SERIAL_8N1`. It is also possible to set pre and post delays in milliseconds for each communication.
+Initializes the RS485 object. The baudrate can be left empty to make it `0`. This will prevent the serial port from being initialized by the RS485 library. You have to then manually initialize the serial port before calling any RS485 library functions. If the baudrate is non-zero, the user can also specify the UART configuration, for example `SERIAL_8N1`. Custom UART configurations are not supported by all platforms, especially when using Software Serial ports. Currently, custom UART frame configurations are ignored when using software serial ports on the AVR platform. It is also possible to set pre and post delays in milliseconds for each communication.
 
 #### Syntax 
 

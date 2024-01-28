@@ -20,8 +20,8 @@
 */
 //===================================================================================//
 
-// Version: 1.0.11
-// Last modified: +05:30 15:51:43 PM 30-10-2023, Monday
+// Version: 1.0.12
+// Last modified: +05:30 15:03:34 PM 28-01-2024, Sunday
 // Source: https://github.com/CIRCUITSTATE/CSE_ArduinoRS485
 
 //===================================================================================//
@@ -39,10 +39,11 @@
 #define RS485_DEFAULT_POST_DELAY    50  // In microseconds
 
 // You can expand the software serial support here.
-// SoftwareSerial is required by board like Arduino Uno and Nano which don't have a
+// SoftwareSerial is required by boards like Arduino Uno and Nano which don't have a
 // dedicated secondary hardware serial port.
-#define SOFTWARE_SERIAL_REQUIRED defined(__AVR__) || defined(ESP8266)
+#define SOFTWARE_SERIAL_REQUIRED defined(__AVR__) || defined(ARDUINO_ARCH_AVR) || defined(ESP8266) 
 
+// The SoftwareSerial is loaded automatically when required.
 #if SOFTWARE_SERIAL_REQUIRED
   #include <SoftwareSerial.h>
 #endif

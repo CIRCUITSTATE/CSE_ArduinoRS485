@@ -18,6 +18,7 @@ peek  KEYWORD2
 read  KEYWORD2
 flush KEYWORD2
 write KEYWORD2
+available KEYWORD2
 
 beginTransmission KEYWORD2
 endTransmission KEYWORD2

@@ -1,16 +1,36 @@
 :repository-owner: CIRCUITSTATE
 :repository-name: CSE_ArduinoRS485
-:repository-version: 1.0.11
+:repository-version: 1.0.12
 
 = {repository-name} Library for Arduino =
 
 This Arduino library allows you to send and receive data using the **RS-485** interface standard. Supported by all Arduino-compatible boards such as ESP32, STM32, RP2040, AVR, SAMD, ESP8266, etc. You can use both hardware and software serial ports for communication. This library supports the Maxim Integrated **MAX485** and equivalent transceivers.
 
+== Installation ==
+
+This library is available from the official **Arduino Library Manager**. Open the Arduino IDE, search for **{repository-name}** and install the latest version of the library.
+
+Additionally, you can download the latest release package from the GitHub repository and install it manually. To do so, open the Arduino IDE, go to **Sketch > Include Library > Add .ZIP Library...** and select the downloaded file.
+
+Another method is to clone the GitHub repository directly into your **libraries** folder. The development branch will have the latest features, bug fixes and other changes. To do so, navigate to your **libraries** folder (usually located at **Documents/Arduino/libraries** on Windows and **~/Documents/Arduino/libraries** on macOS) and execute the following command:
+
+[source,bash]
+----
+git clone https://github.com/CIRCUITSTATE/CSE_ArduinoRS485.git
+----
+
+== Examples ==
 Three examples are included with this library:
 
   * **RS485_Sender** - Sends data to a connected receiver.
   * **RS485_Receiver** - Receives data from a connected sender.
   * **RS485_Passthrough** - Sends and receives data between the RS-485 port and the default serial port.
+
+== API Reference ==
+
+You can find the complete API reference for this library at link:docs/api.md[API.md].
+
+== Reference ==
 
 This library is a fork of the **ArduinoRS485** library by Arduino, and is maintained by **CIRCUITSTATE Electronics**.
 

@@ -20,8 +20,8 @@
 */
 //===================================================================================//
 
-// Version: 1.0.11
-// Last modified: +05:30 15:51:51 PM 30-10-2023, Monday
+// Version: 1.0.12
+// Last modified: +05:30 15:08:03 PM 28-01-2024, Sunday
 // Source: https://github.com/CIRCUITSTATE/CSE_ArduinoRS485
 
 //===================================================================================//
@@ -152,8 +152,14 @@ void RS485Class:: begin (unsigned long baudrate, uint16_t config, int predelay, 
     #if defined(ARDUINO_OPTA)
       auto _opta_uart = static_cast<UART *> (_serial);
       _opta_uart->begin (_baudrate, _config, true);
+    #elif defined(SOFTWARE_SERIAL_REQUIRED)
+      #if defined(ARDUINO_ARCH_AVR)
+        _serial->begin (_baudrate); // AVR software serial doesn't support config
+      #else
+        _serial->begin (_baudrate, _config);
+      #endif
     #else
-      _serial->begin (_baudrate, _config);
+      _serial->begin (_baudrate, _config);  // Default
     #endif
   }
 }
@@ -316,7 +322,18 @@ void RS485Class:: sendBreak (unsigned int duration) {
 
     // Serial port will be reinitialized only if the baudrate is greater than 0.
     if (_baudrate > 0) {
-      _serial->begin (_baudrate, _config);
+      #if defined(ARDUINO_OPTA)
+        auto _opta_uart = static_cast<UART *> (_serial);
+        _opta_uart->begin (_baudrate, _config, true);
+      #elif defined(SOFTWARE_SERIAL_REQUIRED)
+        #if defined(ARDUINO_ARCH_AVR)
+          _serial->begin (_baudrate); // AVR software serial doesn't support config
+        #else
+          _serial->begin (_baudrate, _config);
+        #endif
+      #else
+        _serial->begin (_baudrate, _config);  // Default
+      #endif
     }
   }
 }
@@ -339,7 +356,18 @@ void RS485Class:: sendBreakMicroseconds (unsigned int duration) {
 
     // Serial port will be reinitialized only if the baudrate is greater than 0.
     if (_baudrate > 0) {
-      _serial->begin (_baudrate, _config);
+      #if defined(ARDUINO_OPTA)
+        auto _opta_uart = static_cast<UART *> (_serial);
+        _opta_uart->begin (_baudrate, _config, true);
+      #elif defined(SOFTWARE_SERIAL_REQUIRED)
+        #if defined(ARDUINO_ARCH_AVR)
+          _serial->begin (_baudrate); // AVR software serial doesn't support config
+        #else
+          _serial->begin (_baudrate, _config);
+        #endif
+      #else
+        _serial->begin (_baudrate, _config);  // Default
+      #endif
     }
   }
 }
