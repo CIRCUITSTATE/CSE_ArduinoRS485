@@ -26,6 +26,7 @@ git clone https://github.com/CIRCUITSTATE/CSE_ArduinoRS485.git
 The library can also be installed via **PlatformIO**. All officially listed Arduino listed libraries are automatically fetched by PlatformIO. Use the `lib_deps` search option to install the library.
 
 == Examples ==
+
 Three examples are included with this library:
 
   * **RS485_Sender** - Sends data to a connected receiver.
@@ -34,7 +35,7 @@ Three examples are included with this library:
 
 == API Reference ==
 
-You can find the complete API reference for this library at link:docs/api.md[API.md].
+You can find the complete API reference for this library at link:docs/API.md[API.md].
 
 == Reference ==
 
