@@ -4,9 +4,11 @@
 
 image::https://socialify.git.ci/CIRCUITSTATE/CSE_ArduinoRS485/image?description=1&font=KoHo&forks=1&issues=1&logo=https%3A%2F%2Fwww.circuitstate.com%2Fwp-content%2Fuploads%2F2024%2F05%2FCIRCUITSTATE-R-Emblem-20052024-2.svg&name=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Auto[CSE_ArduinoRS485]
 
-= {repository-name} Library for Arduino =
+= {repository-name} =
 
-This Arduino library allows you to send and receive data using the **RS-485** interface standard. Supported by all Arduino-compatible boards such as ESP32, STM32, RP2040, AVR, SAMD, ESP8266, etc. You can use both hardware and software serial ports for communication. This library supports the Maxim Integrated **MAX485** and equivalent transceivers.
+This Arduino library allows you to send and receive data using the **RS-485** interface standard. Supported by all Arduino-compatible boards such as ESP32, STM32, RP2040, AVR, SAMD, ESP8266, etc. You can use both hardware and software serial ports for communication. This library supports the Maxim Integrated **MAX485** and equivalent external transceivers.
+
+This library is a fork of the https://github.com/arduino-libraries/ArduinoRS485[**ArduinoRS485**] library by Arduino, and is maintained by https://www.circuitstate.com[**CIRCUITSTATE Electronics**].
 
 == Installation ==
 
@@ -21,6 +23,8 @@ Another method is to clone the GitHub repository directly into your **libraries*
 git clone https://github.com/CIRCUITSTATE/CSE_ArduinoRS485.git
 ----
 
+The library can also be installed via **PlatformIO**. All officially listed Arduino listed libraries are automatically fetched by PlatformIO. Use the `lib_deps` search option to install the library.
+
 == Examples ==
 Three examples are included with this library:
 
@@ -33,8 +37,6 @@ Three examples are included with this library:
 You can find the complete API reference for this library at link:docs/api.md[API.md].
 
 == Reference ==
-
-This library is a fork of the **ArduinoRS485** library by Arduino, and is maintained by **CIRCUITSTATE Electronics**.
 
 * https://github.com/arduino-libraries/ArduinoRS485[ArduinoRS485 Library by Arduino]
 * https://www.arduino.cc/reference/en/libraries/arduinors485/[ArduinoRS485 documentation by Arduino]
