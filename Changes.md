@@ -1,4 +1,7 @@
 
+# Changes
+
+Changelog for the `CSE_ArduinoRS485` library. Latest entries are at the top.
 
 #
 ### **+05:30 12:34:00 AM 21-05-2024, Tuesday**
