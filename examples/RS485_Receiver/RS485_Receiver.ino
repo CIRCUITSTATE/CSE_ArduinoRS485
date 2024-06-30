@@ -11,12 +11,10 @@
 
 #include <CSE_ArduinoRS485.h>
 
-// Declare the RS485 interface here with a hardware serial port.
-// RS485Class RS485 (Serial1, 2, 3, 4); // DE, RE, TX
+// If you want to use a software serial port, uncomment the following line.
+// SoftwareSerial Serial1 (10, 11); // RX, TX
 
-// If you want to use a software serial port, declare it here,
-// comment out the previous declaration, and uncomment this section.
-SoftwareSerial Serial1 (10, 11); // RX, TX
+// For using Hardware serial ports, the following line is enough.
 RS485Class RS485 (Serial1, 2, 3, 4); // DE, RE, TX
 
 void setup() {

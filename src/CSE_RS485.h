@@ -20,8 +20,8 @@
 */
 //===================================================================================//
 
-// Version: 1.0.12
-// Last modified: +05:30 15:03:34 PM 28-01-2024, Sunday
+// Version: 1.0.13
+// Last modified: +05:30 21:11:21 PM 30-06-2024, Sunday
 // Source: https://github.com/CIRCUITSTATE/CSE_ArduinoRS485
 
 //===================================================================================//
@@ -41,10 +41,46 @@
 // You can expand the software serial support here.
 // SoftwareSerial is required by boards like Arduino Uno and Nano which don't have a
 // dedicated secondary hardware serial port.
-#define SOFTWARE_SERIAL_REQUIRED defined(__AVR__) || defined(ARDUINO_ARCH_AVR) || defined(ESP8266) 
+// #define SOFTWARE_SERIAL_REQUIRED defined(__AVR__) || defined(ARDUINO_ARCH_AVR) || defined(ESP8266) 
+
+// #if !defined(HAVE_HWSERIAL1) && !defined(HAVE_HWSERIAL2) && !defined(HAVE_HWSERIAL3) && !defined(HAVE_HWSERIAL4)
+//   #define SOFTWARE_SERIAL_REQUIRED 1
+// #endif
+
+// // Check if the user has defined the macro to control SoftwareSerial inclusion
+// #ifdef DISABLE_SOFTWARE_SERIAL
+//   #define SOFTWARE_SERIAL_REQUIRED 0
+// #else
+//   #define SOFTWARE_SERIAL_REQUIRED 1
+// #endif
+
+// Define default values
+#define _HAVE_HWSERIAL1
+
+// Check for specific architectures and boards
+#if defined(ARDUINO_AVR_UNO) || defined(ARDUINO_AVR_NANO)
+  // Arduino Uno and Nano have only one hardware serial port
+  #define _HAVE_HWSERIAL1
+#elif defined(ARDUINO_AVR_MEGA2560)
+  // Arduino Mega has four hardware serial ports
+  #define _HAVE_HWSERIAL1
+  #define _HAVE_HWSERIAL2
+  #define _HAVE_HWSERIAL3
+  #define _HAVE_HWSERIAL4
+#elif defined(ARDUINO_ARCH_ESP32)
+  // ESP32 typically has three hardware serial ports
+  #define _HAVE_HWSERIAL1
+  #define _HAVE_HWSERIAL2
+  #define _HAVE_HWSERIAL3
+#endif
+
+// Define a flag to include SoftwareSerial if no additional UARTs are available
+#if !defined(_HAVE_HWSERIAL2) && !defined(_HAVE_HWSERIAL3) && !defined(_HAVE_HWSERIAL4)
+  #define SOFTWARE_SERIAL_REQUIRED 1
+#endif
 
 // The SoftwareSerial is loaded automatically when required.
-#if SOFTWARE_SERIAL_REQUIRED
+#ifdef SOFTWARE_SERIAL_REQUIRED
   #include <SoftwareSerial.h>
 #endif
 
