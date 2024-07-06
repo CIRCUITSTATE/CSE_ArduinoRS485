@@ -21,7 +21,7 @@
 //===================================================================================//
 
 // Version: 1.0.13
-// Last modified: +05:30 21:11:21 PM 30-06-2024, Sunday
+// Last modified: +05:30 22:26:25 PM 06-07-2024, Saturday
 // Source: https://github.com/CIRCUITSTATE/CSE_ArduinoRS485
 
 //===================================================================================//
@@ -72,6 +72,10 @@
   #define _HAVE_HWSERIAL1
   #define _HAVE_HWSERIAL2
   #define _HAVE_HWSERIAL3
+#else
+  // Else assume that the board has at least two hardware serial ports
+  #define _HAVE_HWSERIAL1
+  #define _HAVE_HWSERIAL2
 #endif
 
 // Define a flag to include SoftwareSerial if no additional UARTs are available

@@ -3,6 +3,12 @@
 
 Changelog for the `CSE_ArduinoRS485` library. Latest entries are at the top.
 
+
+#
+### **+05:30 10:40:59 PM 06-07-2024, Saturday**
+
+  * Added support for generic boards with more than two serial ports. The previous code was not compiling for boards like Raspberry Pi Pico.
+
 #
 ### **+05:30 08:31:31 PM 30-06-2024, Sunday**
 

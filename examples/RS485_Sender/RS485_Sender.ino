@@ -14,9 +14,9 @@
 int counter = 0;
 
 // If you want to use a software serial port, uncomment the following line.
-SoftwareSerial Serial1 (10, 11); // RX, TX
+// SoftwareSerial Serial1 (10, 11); // RX, TX
 
-// For using Hardware serial ports, the following line is enough.
+// For using Hardware serial ports, the following line is enough. The port should already exist in the board definitions.
 RS485Class RS485 (Serial1, 2, 3, 4); // DE, RE, TX
 
 void setup() {
