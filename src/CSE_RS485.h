@@ -21,7 +21,7 @@
 //===================================================================================//
 
 // Version: 1.0.13
-// Last modified: +05:30 20:36:49 PM 27-10-2024, Sunday
+// Last modified: +05:30 21:05:46 PM 27-10-2024, Sunday
 // Source: https://github.com/CIRCUITSTATE/CSE_ArduinoRS485
 
 //===================================================================================//
@@ -152,7 +152,7 @@ class RS485Class : public Stream {
     bool _transmisionBegun; // True if transmission has begun
     unsigned long _baudrate; // Baudrate of the serial port
 
-    #if defined(ESP32) || defined(ESP8266)
+    #if defined(ESP8266) && defined(SOFTWARE_SERIAL_REQUIRED)
       Config _config; // Config of the serial port
     #else
       uint16_t _config;

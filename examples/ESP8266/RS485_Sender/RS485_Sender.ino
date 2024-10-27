@@ -22,15 +22,16 @@
 
 int counter = 0;
 
-// If you want to use a software serial port, uncomment the following line.
-SoftwareSerial softSerial (PIN_RS485_RX, PIN_RS485_TX, false); // RX, TX
+// Use the software serial port for the RS485 interface and the hardware serial port for
+// the debugging output.
+SoftwareSerial softSerial (PIN_RS485_RX, PIN_RS485_TX); // RX, TX
 
 // Use the software serial port to create a new RS485 object.
 RS485Class RS485 (softSerial, -1, -1, PIN_RS485_TX); // DE, RE, TX
 
 void setup() {
   // Initialize the RS485 interface
-  RS485.begin (9600);
+  RS485.begin (9600, SWSERIAL_8N1, PIN_RS485_RX, PIN_RS485_TX);
 }
 
 void loop() {

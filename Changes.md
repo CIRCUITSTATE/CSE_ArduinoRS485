@@ -5,6 +5,17 @@ Changelog for the `CSE_ArduinoRS485` library. Latest entries are at the top.
 
 
 #
+### **+05:30 10:26:50 PM 27-10-2024, Sunday**
+
+  - Updated ESP8266 examples.
+
+#
+### **+05:30 09:07:22 PM 27-10-2024, Sunday**
+
+  - Limited the `Config` type creation to only ESP8266.
+    - ESP32 has been removed since it has multiple hardware serial ports.
+
+#
 ### **+05:30 08:59:47 PM 27-10-2024, Sunday**
 
   - Added support for `Config` serial configuration for ESP8266 software serial interfaces.
