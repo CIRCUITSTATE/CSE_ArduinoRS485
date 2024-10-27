@@ -21,7 +21,7 @@
 //===================================================================================//
 
 // Version: 1.0.13
-// Last modified: +05:30 22:26:25 PM 06-07-2024, Saturday
+// Last modified: +05:30 20:36:49 PM 27-10-2024, Sunday
 // Source: https://github.com/CIRCUITSTATE/CSE_ArduinoRS485
 
 //===================================================================================//
@@ -58,7 +58,7 @@
 #define _HAVE_HWSERIAL1
 
 // Check for specific architectures and boards
-#if defined(ARDUINO_AVR_UNO) || defined(ARDUINO_AVR_NANO)
+#if defined(ARDUINO_AVR_UNO) || defined(ARDUINO_AVR_NANO) || defined(ESP8266)
   // Arduino Uno and Nano have only one hardware serial port
   #define _HAVE_HWSERIAL1
 #elif defined(ARDUINO_AVR_MEGA2560)
@@ -151,7 +151,12 @@ class RS485Class : public Stream {
 
     bool _transmisionBegun; // True if transmission has begun
     unsigned long _baudrate; // Baudrate of the serial port
-    uint16_t _config; // Config of the serial port
+
+    #if defined(ESP32) || defined(ESP8266)
+      Config _config; // Config of the serial port
+    #else
+      uint16_t _config;
+    #endif
 };
 
 #endif

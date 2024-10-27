@@ -21,7 +21,7 @@
 //===================================================================================//
 
 // Version: 1.0.13
-// Last modified: +05:30 21:11:24 PM 30-06-2024, Sunday
+// Last modified: +05:30 20:36:37 PM 27-10-2024, Sunday
 // Source: https://github.com/CIRCUITSTATE/CSE_ArduinoRS485
 
 //===================================================================================//
@@ -128,7 +128,12 @@ void RS485Class::begin (unsigned long baudrate, uint16_t config) {
  */
 void RS485Class:: begin (unsigned long baudrate, uint16_t config, int predelay, int postdelay) {
   _baudrate = baudrate;
-  _config = config;
+
+  #if defined(ESP32) || defined(ESP8266)
+    _config = static_cast<Config>(config);
+  #else
+    _config = config;
+  #endif
 
   // Set only if not already initialized with ::setDelays
   _predelay = _predelay == 0 ? predelay : _predelay;
