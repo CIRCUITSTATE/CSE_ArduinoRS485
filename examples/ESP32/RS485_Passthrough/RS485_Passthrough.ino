@@ -1,29 +1,55 @@
+
+//===================================================================================//
 /*
-  RS-485 Passthrough.
+  Filename: RS485_Passthrough.ino [ESP32]
+  Description: Example Arduino program from the CSE_ArduinoRS485 Arduino library.
+  Acts as a passthrough to send and receive data to and from an RS485 port.
 
-  This sketch relays data sent and received between the Serial port and the RS-485 interface.
-
-  Originally created by Sandeep Mistry, on 4 July 2018.
-  Modified by @vishnumaiea for CIRCUITSTATE Electronics (@circuitstate).
-
+  This example was written for and tested with the FireBeetle-ESP32E (ESP32). 
+  
+  Framework: Arduino, PlatformIO
+  Author: Vishnu Mohanan (@vishnumaiea, @vizmohanan)
+  Maintainer: CIRCUITSTATE Electronics (@circuitstate)
+  Version: 1.0.14
+  License: MIT
   Source: https://github.com/CIRCUITSTATE/CSE_ArduinoRS485
-*/
+  Last Modified: +05:30 21:54:37 PM 20-03-2025, Thursday
+ */
+//===================================================================================//
 
 #include <CSE_ArduinoRS485.h>
 
+//===================================================================================//
+// Macros and constants
+
+// You can define the serial port pins here.
+#define   PIN_RS485_DE        16
+#define   PIN_RS485_RE        17
+#define   PIN_RS485_RX        9
+#define   PIN_RS485_TX        10
+
+//===================================================================================//
+// Globals
+
 // Declare the RS485 interface here with a hardware serial port.
-RS485Class RS485 (Serial1, 2, 3, 4); // DE, RE, TX
+RS485Class RS485 (Serial1, PIN_RS485_DE, PIN_RS485_RE, PIN_RS485_TX); // DE, RE, TX
 
 /* // If you want to use a software serial port, declare it here,
 // comment out the previous declaration, and uncomment this section.
 #include <SoftwareSerial.h>
 
-SoftwareSerial mySerial (10, 11); // RX, TX
-RS485Class RS485 (mySerial, 2, 3, 4); // DE, RE, TX */
+SoftwareSerial mySerial (PIN_RS485_RX, PIN_RS485_TX); // RX, TX
+RS485Class RS485 (mySerial, PIN_RS485_DE, PIN_RS485_RE, PIN_RS485_TX); // DE, RE, TX */
+
+//===================================================================================//
 
 void setup() {
   Serial.begin (9600);
   RS485.begin (9600);
+
+  // // Optional for ESP32. Set the serial port pins here.
+  // // SetPins can be called after or before begin() for ESP32.
+  // Serial1.setPins (PIN_RS485_RX, PIN_RS485_TX);
 
   // Enable transmission. Can be disabled with: RS485.endTransmission();
   RS485.beginTransmission();
@@ -32,12 +58,18 @@ void setup() {
   RS485.receive();
 }
 
+//===================================================================================//
+
 void loop() {
+  // Read from the default serial port and send the data to the RS485 port.
   if (Serial.available()) {
     RS485.write (Serial.read());
   }
 
+  // Read from the RS485 port and send the data to the default serial port.
   if (RS485.available()) {
     Serial.write (RS485.read());
   }
 }
+
+//===================================================================================//

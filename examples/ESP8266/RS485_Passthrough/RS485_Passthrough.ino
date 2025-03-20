@@ -1,25 +1,34 @@
 
 //===================================================================================//
-/**
-  * @file RS485_Passthrough.ino
-  * @brief RS-485 Passthrough for ESP8266 series boards.
-  * 
-  * This sketch relays data sent and received between the default Serial port and
-  * the RS-485 interface.
-  * 
-  * @date +05:30 08:58:44 PM 27-10-2024, Sunday
-  * @author Vishnu Mohanan (@vishnumaiea)
-  * @par GitHub Repository: https://github.com/CIRCUITSTATE/CSE_ArduinoRS485
-  * @par MIT License
-  * 
-  */
+/*
+  Filename: RS485_Passthrough.ino [ESP8266]
+  Description: Example Arduino program from the CSE_ArduinoRS485 Arduino library.
+  Acts as a passthrough to send and receive data to and from an RS485 port.
+
+  This example was written for and tested with the NodeMCU-ESP12E (ESP8266). 
+  
+  Framework: Arduino, PlatformIO
+  Author: Vishnu Mohanan (@vishnumaiea, @vizmohanan)
+  Maintainer: CIRCUITSTATE Electronics (@circuitstate)
+  Version: 1.0.14
+  License: MIT
+  Source: https://github.com/CIRCUITSTATE/CSE_ArduinoRS485
+  Last Modified: +05:30 22:36:11 PM 20-03-2025, Thursday
+ */
 //===================================================================================//
 
 #include <CSE_ArduinoRS485.h>
 
+//===================================================================================//
+// Macros and constants
+
 // You can define the serial port pins here.
+// #define   PIN_RS485_DE        16
+// #define   PIN_RS485_RE        17
 #define   PIN_RS485_RX        14
 #define   PIN_RS485_TX        12
+
+//===================================================================================//
 
 // Use the software serial port for the RS485 interface and the hardware serial port for
 // the debugging output.
@@ -27,6 +36,8 @@ SoftwareSerial softSerial (PIN_RS485_RX, PIN_RS485_TX, false); // RX, TX
 
 // Use the software serial port to create a new RS485 object.
 RS485Class RS485 (softSerial, -1, -1, PIN_RS485_TX); // DE, RE, TX
+
+//===================================================================================//
 
 void setup() {
   Serial.begin (9600);
@@ -39,12 +50,18 @@ void setup() {
   RS485.receive();
 }
 
+//===================================================================================//
+
 void loop() {
+  // Read from the default serial port and send the data to the RS485 port.
   if (Serial.available()) {
     RS485.write (Serial.read());
   }
 
+  // Read from the RS485 port and send the data to the default serial port.
   if (RS485.available()) {
     Serial.write (RS485.read());
   }
 }
+
+//===================================================================================//
