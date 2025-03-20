@@ -5,6 +5,13 @@ Changelog for the `CSE_ArduinoRS485` library. Latest entries are at the top.
 
 
 #
+### **+05:30 11:25:41 PM 20-03-2025, Thursday**
+
+  - Bumped up the version in Arduino library specification files.
+  - Updated project information and attribution in the source files.
+  - New Version 🆕 `1.0.14`.
+
+#
 ### **+05:30 10:41:11 PM 20-03-2025, Thursday**
 
   - Updated examples for ESP32, ESP8266 and RP2040.

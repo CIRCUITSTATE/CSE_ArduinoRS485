@@ -1,6 +1,18 @@
 
 //===================================================================================//
 /*
+  Filename: CSE_RS485.h
+  Description: Main header file for the CSE_ArduinoRS485 Arduino library.
+  Framework: Arduino, PlatformIO
+  Author: Vishnu Mohanan (@vishnumaiea, @vizmohanan)
+  Maintainer: CIRCUITSTATE Electronics (@circuitstate)
+  Version: 1.0.14
+  License: LGPL 2.1
+  Source: https://github.com/CIRCUITSTATE/CSE_ArduinoRS485
+  Last Modified: +05:30 23:28:19 PM 20-03-2025, Thursday
+ */
+//===================================================================================//
+/*
   This file is part of the ArduinoRS485 library.
   Copyright (c) 2018 Arduino SA. All rights reserved.
 
@@ -18,12 +30,6 @@
   License along with this library; if not, write to the Free Software
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
-//===================================================================================//
-
-// Version: 1.0.13
-// Last modified: +05:30 22:35:33 PM 20-03-2025, Thursday
-// Source: https://github.com/CIRCUITSTATE/CSE_ArduinoRS485
-
 //===================================================================================//
 
 #ifndef _CSE_RS485_H_INCLUDED

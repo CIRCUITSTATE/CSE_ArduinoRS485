@@ -1,6 +1,6 @@
 # CSE_ArduinoRS485 library
 
-Version 1.0.12, +05:30 03:16:49 PM 28-01-2024, Sunday, Monday
+Version 1.0.14, +05:30 11:23:57 PM 20-03-2025, Thursday
 
 ### Index
 
@@ -30,7 +30,7 @@ Version 1.0.12, +05:30 03:16:49 PM 28-01-2024, Sunday, Monday
 
 ### `RS485Class()`
 
-Creates a new `RS485Class` object. If you are using a hardware serial port, you can simply send its name as a parameter. If you are using software serial, you must include the SoftwareSerial library first and create a new object of that type. Then send the name of the object as a parameter.
+Creates a new `RS485Class` object. If you are using a hardware serial port, you can simply send its name as a parameter. If you are using software serial, you must include the `SoftwareSerial` library first and create a new object of that type. Then send the name of the object as a parameter.
 
 Currently, software serial is supported only on AVR (Arduino Uno, Nano, etc.) and ESP8266 boards. The macro `SOFTWARE_SERIAL_REQUIRED` is used to check if a software serial port to be used. You can update the board support by adding the board name to the macro in the `CSE_RS485.h` file. 
 #### Syntax 
