@@ -13,7 +13,7 @@
   Version: 1.0.14
   License: MIT
   Source: https://github.com/CIRCUITSTATE/CSE_ArduinoRS485
-  Last Modified: +05:30 21:44:04 PM 20-03-2025, Thursday
+  Last Modified: +05:30 22:54:38 PM 20-03-2025, Thursday
  */
 //===================================================================================//
 
