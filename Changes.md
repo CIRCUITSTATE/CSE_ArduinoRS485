@@ -40,7 +40,7 @@ Changelog for the `CSE_ArduinoRS485` library. Latest entries are at the top.
 
   - Added new platform/board checking pre-processor section to enable the SoftwareSerial library. Some AVR boards like Mega 2560 have multiple hardware serial ports and therefore shouldn't be using the SoftwareSerial library. The new changes fix this issue.
   - The examples are compiling for Uno, Mega 2560 and ESP32 DevKit.
-  - New Revision `v1.0.13`.
+  - New Revision 🆕 `v1.0.13`.
 
 #
 ### **+05:30 12:34:00 AM 21-05-2024, Tuesday**
