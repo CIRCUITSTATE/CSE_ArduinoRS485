@@ -21,7 +21,7 @@
 //===================================================================================//
 
 // Version: 1.0.13
-// Last modified: +05:30 22:26:25 PM 06-07-2024, Saturday
+// Last modified: +05:30 21:11:21 PM 30-06-2024, Sunday
 // Source: https://github.com/CIRCUITSTATE/CSE_ArduinoRS485
 
 //===================================================================================//
@@ -56,11 +56,13 @@
 
 // Define default values
 #define _HAVE_HWSERIAL1
+#define _HAVE_HWSERIAL2
 
 // Check for specific architectures and boards
 #if defined(ARDUINO_AVR_UNO) || defined(ARDUINO_AVR_NANO)
   // Arduino Uno and Nano have only one hardware serial port
   #define _HAVE_HWSERIAL1
+  #undef _HAVE_HWSERIAL2	
 #elif defined(ARDUINO_AVR_MEGA2560)
   // Arduino Mega has four hardware serial ports
   #define _HAVE_HWSERIAL1
@@ -72,10 +74,6 @@
   #define _HAVE_HWSERIAL1
   #define _HAVE_HWSERIAL2
   #define _HAVE_HWSERIAL3
-#else
-  // Else assume that the board has at least two hardware serial ports
-  #define _HAVE_HWSERIAL1
-  #define _HAVE_HWSERIAL2
 #endif
 
 // Define a flag to include SoftwareSerial if no additional UARTs are available
